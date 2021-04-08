@@ -42,11 +42,46 @@ us_gross = []
 # tell our scraper to find all of these lister-item mode-advanced divs
 # movie_div is the variable we’ll use to store all of the div containers with a class of lister-item mode-advanced
 # the find_all() method extracts all the div containers that have a class attribute of lister-item mode-advanced from what we have stored in our variable soup
-movie_div = soup.find_all('div', class_="lister-item mode-advanced")
+movie_div = soup.find_all('div', class_='lister-item mode-advanced')
 
 
 # iterate through every div container stored in movie_div
 for container in movie_div:
 
+    # Store the title data found in the div
     name = container.h3.a.text
+    # Aftwards store the data in the titles list
     titles.append(name)
+
+    # Since the span tag in this case is the second span tag we want go grab, we need a different method
+    year = container.h3.find('span', class_='lister-item-year').text
+    years.append(year)
+
+    # Find the runtime and define a case if it is not existent
+    runtime = container.find('span', class_='runtime').text if container.p.find('span', class_='runtime') else ''
+    time.append(runtime)
+
+    # Find the IMDb rating
+    imdb = float(container.strong.text)
+    imdb_ratings.append(imdb)
+
+    #metascore
+    m_score = container.find('span', class_='metascore').text if container.find('span', class_='metascore') else '-'
+    metascores.append(m_score)
+
+    #there are two NV containers, grab both of them as they hold both the votes and the grosses
+    nv = container.find_all('span', attrs={'name': 'nv'})
+        
+    #filter nv for votes
+    vote = nv[0].text
+    votes.append(vote)
+        
+    #filter nv for gross
+    grosses = nv[1].text if len(nv) > 1 else '-'
+    us_gross.append(grosses)
+
+movies = pd.DataFrame({
+    'Titel': titles
+})
+
+print(movies)
