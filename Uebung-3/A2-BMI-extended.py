@@ -28,9 +28,8 @@ bmi = round(gewicht/((groesse/100)**2), 1)
 print (groesse, "Ihr berechneter BMI beträgt: ", bmi,)
 
 # Bewertung des BMI
-
 if bmi < untergewicht:
-    print ("Der BMI fällt in den Bereich des Untergewichts")
+    print ("Der BMI fällt in den Bereich des Untergewichts.")
 elif normalgewichtBottom < bmi < normalgewichtTop:
     print ("Der BMI liegt im Normalbereich.")
 elif uebergewichtBottom < bmi < uebergewichtTop:
