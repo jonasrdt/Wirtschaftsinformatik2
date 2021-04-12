@@ -5,12 +5,12 @@ a = int(input("Erste Zahl: "))
 b = int(input("zweite Zahl: "))
 
 # Verarbeitung
-zaehler = 0
+schleifenZaehler = 0
 while a >= b:
     a=a-b
     print (a)
-    zaehler = zaehler + 1
-    print("Der Zähler steht jetzt bei:", zaehler)
+    schleifenZaehler = schleifenZaehler + 1
+    print("Der Zähler steht jetzt bei:", schleifenZaehler)
     print()
 # Ausgabe
-print("Zähler:", zaehler)
+print("Die Schleife ist:", schleifenZaehler, "Mal durchgelaufen.")

@@ -7,7 +7,7 @@
 x_Richtung = int(input("Wie viele in X-Richtung?"))
 y_Richtung = int(input("Wie viele in Y-Richtung?"))
 
-for i in range(y_Richtung):
-    for j in range(x_Richtung):
+for zeilen in range(y_Richtung):
+    for spalten in range(x_Richtung):
         print("*", end="")
     print()
