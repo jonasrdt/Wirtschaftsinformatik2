@@ -10,7 +10,7 @@ while a >= b:
     a=a-b
     print (a)
     schleifenZaehler = schleifenZaehler + 1
-    print("Der Zähler steht jetzt bei:", schleifenZaehler)
+    print("Der Schleifen-Zähler steht jetzt bei:", schleifenZaehler)
     print()
 # Ausgabe
 print("Die Schleife ist:", schleifenZaehler, "Mal durchgelaufen.")
