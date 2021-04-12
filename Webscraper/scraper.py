@@ -44,6 +44,8 @@ us_gross = []
 # the find_all() method extracts all the div containers that have a class attribute of lister-item mode-advanced from what we have stored in our variable soup
 movie_div = soup.find_all('div', class_='lister-item mode-advanced')
 
+print(movie_div)
+
 
 # iterate through every div container stored in movie_div
 for container in movie_div:
@@ -80,8 +82,17 @@ for container in movie_div:
     grosses = nv[1].text if len(nv) > 1 else '-'
     us_gross.append(grosses)
 
+# Put the scraped data in the pandas dataframe and give it fitting names
 movies = pd.DataFrame({
-    'Titel': titles
+    'Titel': titles,
+    'Jahr': years,
+    'Dauer': time,
+    'IMDb Rating': imdb_ratings,
+    'Metascore': metascores,
+    'Votes': votes,
+    'us_grossMillions': us_gross
 })
+
+movies['Jahr'] = movies ['Jahr'].str.extract('(\d+)').astype(int)
 
 print(movies)
