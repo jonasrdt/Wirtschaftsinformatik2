@@ -16,4 +16,4 @@ for zeilen in range (hoechsterWert+1):
     # Vom höchsten Wert aus der vorherigen Schleife herunterzählen
     for werte in range (zeilen -1, 0, -1):
         print (werte, end=" ")
-    print()
+    print() 
