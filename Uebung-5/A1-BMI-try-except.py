@@ -12,6 +12,7 @@ untergewicht = 18.5
 normalgewichtTop = 24.9
 normalgewichtBottom = 18.5
 uebergewichtTop = 29.9
+
 uebergewichtBottom = 25
 adipositas = 30
 
