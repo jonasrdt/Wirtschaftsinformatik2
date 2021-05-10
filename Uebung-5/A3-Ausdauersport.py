@@ -39,6 +39,3 @@ berechneter_Puls = optimalerPuls(alter)
 print()
 print ("Mit einem Alter von", alter, "liegt Ihr optimaler Puls für Ausdauersportarten bei", berechneter_Puls, ".")
 print()
-
-
-
