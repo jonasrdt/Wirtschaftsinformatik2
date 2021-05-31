@@ -1,7 +1,5 @@
 #################################################
 # Webscraper to get movie informations from IMDb
-# v.0.1.
-# Jonas Reinhardt / FH Kiel
 #################################################
 
 # Do all the import stuff
@@ -11,7 +9,7 @@ from requests import get
 from bs4 import BeautifulSoup # will help us parse the HTML files
 
 import pandas as pd # will help us assemble the data into a DataFrame to clean and analyze it
-import numpy as np
+
 
 # Since we may have a different language, we want to commit on english
 headers = {"Accept Language": "en-US, en;q=0.5"}
@@ -44,7 +42,7 @@ us_gross = []
 # the find_all() method extracts all the div containers that have a class attribute of lister-item mode-advanced from what we have stored in our variable soup
 movie_div = soup.find_all('div', class_='lister-item mode-advanced')
 
-print(movie_div)
+# print(movie_div)
 
 
 # iterate through every div container stored in movie_div
@@ -93,6 +91,20 @@ movies = pd.DataFrame({
     'us_grossMillions': us_gross
 })
 
-movies['Jahr'] = movies ['Jahr'].str.extract('(\d+)').astype(int)
-
+# Let's see how the result looks so far
 print(movies)
+
+# Remove parantheses from the year data
+movies['Jahr'] = movies['Jahr'].str.extract('(\d+)').astype(int)
+movies['Dauer'] = movies['Dauer'].str.extract('(\d+)').astype(int)
+
+
+# Remove the commas from the votes and convert the it to integer
+movies['Votes'] = movies['Votes'].str.replace(',', '').astype(int)
+
+# Cleaning the us_grossMillions column
+movies['us_grossMillions'] = movies['us_grossMillions'].map(lambda x: x.lstrip('$').rstrip('M'))
+movies['us_grossMillions'] = pd.to_numeric(movies['us_grossMillions'], errors = 'coerce')
+
+# Extract csv-File
+movies.to_csv('movies.csv')

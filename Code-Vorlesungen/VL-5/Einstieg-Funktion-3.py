@@ -18,6 +18,10 @@ def maximum_3_zahlen(zahl1, zahl2, zahl3):
         maximum = zahl3
     return maximum # return gibt nur den Wert über die Funktion zurück, der danach verarbeitet muss
 
+
+
+
+
 trenner(75)
 # Der Nutzer wird gebeten drei Zahlen einzugeben
 erste_zahl = int(input("Bitte geben Sie die erste Zahl ein: "))
