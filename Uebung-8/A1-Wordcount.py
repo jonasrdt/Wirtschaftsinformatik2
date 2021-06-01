@@ -6,7 +6,7 @@ char_count = 0
 nutzereingabe = input("Bitte geben Sie einen Satz ein: ")
 
 # Aufteilen der Nutzereingabe mithilfe von split()
-split_string = nutzereingabe.split()
+split_string = nutzereingabe.split(" ")
 
 # Zählen der Wörter mithilfe von len()
 word_count = len(split_string)
