@@ -5,13 +5,13 @@ warenlager = {"Schrauben": 500,
               }
 
 print(warenlager)
-warenlager.update({"Muttern": 50})
+warenlager.update({"Muttern": 50}) # Hinzufügen eines neuen Elements zum Dictionary
 print(warenlager)
-warenlager.update({"Schrauben": 310})
+warenlager.update({"Schrauben": 310}) # Ändern der Anzahl eines Elements
 print(warenlager)
-warenlager.pop("Schrauben")
+warenlager.pop("Schrauben") # Löschen eines Elements
 print(warenlager)
-warenlager.clear()
+warenlager.clear() # Löschen des gesamten Dictionaries
 print(warenlager)
 
 abfrage = input("Von welchem Posten wollen Sie die verfügbare Anzahl im Lager wissen: ")
