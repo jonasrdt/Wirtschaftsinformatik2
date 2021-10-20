@@ -10,10 +10,10 @@ Pi = 3.14159 # Globale Variable Pi zur Berechnung des Umfangs und der Fläche
 
 # Definition der Funktion zur Berechnung des Kreisumfangs in Zentimetern einer Pizza auf Basis des Radius
 def pizzaumfang(Radius):
-    # Berechnung des Kreisumfangs und Runden auf 2 Nachkommastellen und Zuweisen des Ergebnisses zur lokalen Variable kreisumfang
-    kreisumfang = round(2 * Pi * Radius, 2)
+    # Berechnung des Kreisumfangs und Runden auf 2 Nachkommastellen und Zuweisen des Ergebnisses zur lokalen Variable pizzaumfang
+    pizzaumfang = round(2 * Pi * Radius, 2)
     # Verfügbarmachen des Wertes für den Kreisumfang aus dem lokalen Kontext in den globalen
-    return kreisumfang
+    return pizzaumfang
 
 # Berechnung der Grundfläche einer Pizza in Quadratzentimetern, basierend auf dem Radius und der Anzahl der Pizzen
 def pizzaflaeche(Radius, Anzahl):
