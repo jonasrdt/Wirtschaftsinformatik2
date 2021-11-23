@@ -69,13 +69,23 @@ movies = pd.DataFrame({
     'Umsatz': umsatz,
     'Dauer': dauer
 })
-
+print (movies)
 # Entfernen der Klammern um das Jahr herum
 movies['Jahr'] = movies['Jahr'].str.extract('(\d+)').astype(int)
 # Entfernen der Minuten hinter der Laufzeit
 movies['Dauer'] = movies['Dauer'].str.extract('(\d+)').astype(int)
 # Entfernen des $ und des M vor und nach dem Gesamtumsatz
 movies['Umsatz'] = movies['Umsatz'].map(lambda x: x.lstrip('$').rstrip('M'))
-
 print(movies)
-movies.to_csv('movies2.csv')
+movies.to_csv('movies3.csv')
+
+
+
+
+
+
+
+for zaehler in len(liste):
+    print(liste[zaehler])
+    
+    
