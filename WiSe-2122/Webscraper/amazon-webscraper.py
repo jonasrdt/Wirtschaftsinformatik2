@@ -12,10 +12,12 @@ import pandas as pd
 url = "https://www.amazon.de/s?k=macbook+pro&__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss_1"
 
 # Forcieren der englischen Website
-headers = {"Accept Language": "en-US, en; q=0.5"}
+HEADERS = ({'User-Agent':
+            'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
+            'Accept-Language': 'en-US, en;q=0.5'})
 
 # Variable in der das Ergebnis des GET Requests gespeichert wird
-results = requests.get(url, headers = headers)
+results = requests.get(url, headers = HEADERS)
 
 # Übersetzen des Inhalts von result
 soup = BeautifulSoup(results.text, "html.parser")
@@ -48,6 +50,7 @@ for container in item_div:
     
     if container.find('span', class_="a-icon-alt"):
         bewertung_temp = container.find('span', class_="a-icon-alt").text
+        # 4,8 von 5 Sternen
         bewertung.append(bewertung_temp[:3])
     else:
         bewertung.append('')
@@ -58,5 +61,7 @@ produkte = pd.DataFrame({
     'Preis': preis,
     'Bewertung': bewertung
 })
+print(produkte)
 
-produkte.to_csv('produkte.csv')
+
+# produkte.to_csv('produkte.csv')
