@@ -15,7 +15,7 @@ url = "https://www.amazon.de/s?k=macbook+pro&__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%9
 headers = {"Accept Language": "en-US, en; q=0.5"}
 
 # Variable in der das Ergebnis des GET Requests gespeichert wird
-results = requests.get(url, headers = HEADERS)
+results = requests.get(url, headers = headers)
 
 # Übersetzen des Inhalts von result
 soup = BeautifulSoup(results.text, "html.parser")
@@ -60,11 +60,3 @@ produkte = pd.DataFrame({
 })
 
 produkte.to_csv('produkte.csv')
-
-
-
-    # if container.find('span', class_='a-size-medium a-color-base a-text-normal') and container.find('span', class_='a-price-whole'):
-    #     titel_temp = container.find('span', class_='a-size-medium a-color-base a-text-normal').text
-    #     titel.append(titel_temp)
-    #     preis_temp = container.find('span', class_='a-price-whole').text
-    #     preis.append(preis_temp)
