@@ -3,23 +3,23 @@ import requests
 from requests import get
 
 # Übersetzung der Website in Text
-from bs4 import BeautifulSoup 
+from bs4 import BeautifulSoup
 
 # Zusammensetzen der Daten in DataFrames
 import pandas as pd
 
 # Übernehmen der URL von Amazon
-url = "https://www.amazon.de/s?k=macbook+pro&__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss_1"
+url = "https://www.amazon.de/s?k=macbook+pro&__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss_2"
 
 # Forcieren der englischen Website
 HEADERS = ({'User-Agent':
-            'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
+            'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.2228.0 Safari/537.36',
             'Accept-Language': 'en-US, en;q=0.5'})
 
 # Variable in der das Ergebnis des GET Requests gespeichert wird
 results = requests.get(url, headers = HEADERS)
 
-# Übersetzen des Inhalts von result
+# # Übersetzen des Inhalts von result
 soup = BeautifulSoup(results.text, "html.parser")
 
 # Initialisieren der Variablen für die geforderten Inhalte
@@ -36,32 +36,41 @@ ram = []
 item_div = soup.find_all('div', class_='sg-col-inner')
 
 for container in item_div:
+    # Namen einlesen
     if container.find('span', class_='a-size-medium a-color-base a-text-normal'):
         titel_temp = container.find('span', class_='a-size-medium a-color-base a-text-normal').text
         titel.append(titel_temp)
     else:
         titel.append('')
-        
+
+    # Preis einlesen
     if container.find('span', class_='a-price-whole'):
         preis_temp = container.find('span', class_='a-price-whole').text
         preis.append(preis_temp)    
     else:
         preis.append('')
     
+    # Bewertung einlesen und slicen
     if container.find('span', class_="a-icon-alt"):
         bewertung_temp = container.find('span', class_="a-icon-alt").text
         # 4,8 von 5 Sternen
         bewertung.append(bewertung_temp[:3])
     else:
         bewertung.append('')
-  
-  
+
+    for i in container.select('div.sg-col-inner > span.a-text-bold'):
+        print(i.text)
+        
+        
+        content_temp = str(i.text)
+        if content_temp.find("SSD"):
+            cpu.append(content_temp + ",")
+
 produkte = pd.DataFrame({
     'Name': titel,
     'Preis': preis,
     'Bewertung': bewertung
 })
-print(produkte)
+print(cpu)
+produkte.to_csv('produkte.csv')
 
-
-# produkte.to_csv('produkte.csv')
