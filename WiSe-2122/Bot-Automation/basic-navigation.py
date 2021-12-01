@@ -11,7 +11,7 @@ url = 'https://modulanmeldung.fh-kiel.de/'
 
 # Find webdriver for Chrome
 browser = webdriver.Chrome(
-    executable_path='/Users/jonasreinhardt/Desktop/_Desktop/Studium/_Module_FH/_SoSe_21/_Wirtschaftsinformatik-2a/Uebungen/Repo/Wirtschaftsinformatik2/WiSe-2122/Bot-Automation/chromedriver')
+    executable_path='') # Hinzufügen des chromedriver executable paths
 
 # Aufrufen der Website mithilfe von Selenium 
 browser.get(url)
