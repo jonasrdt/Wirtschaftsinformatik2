@@ -7,13 +7,46 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 # Set URL to interact with
-url = ''
+url = 'https://modulanmeldung.fh-kiel.de/'
 
 # Find webdriver for Chrome
 browser = webdriver.Chrome(
-    executable_path='')
+    executable_path='/Users/jonasreinhardt/Desktop/_Desktop/Studium/_Module_FH/_SoSe_21/_Wirtschaftsinformatik-2a/Uebungen/Repo/Wirtschaftsinformatik2/WiSe-2122/Bot-Automation/chromedriver')
 
 # Aufrufen der Website mithilfe von Selenium 
-browser.get(course)
+browser.get(url)
+
+# Wait until the "Anmelden" field is loaded and fully available to our script
+try:
+    login_button = WebDriverWait(browser, 120, 1).until(
+        expect.element_to_be_clickable(
+            (By.XPATH, "/html/body/nav/div/div[2]/ul[2]/li[2]/form/button")
+        )
+    )
+finally:
+    browser.implicitly_wait(10)
+    login_button.click()
 
 
+pw = input("Bitte geben Sie Ihr Passwort ein: ")
+pw.strip()
+
+# E-Mail Adresse einfügen
+try:
+    user_input = WebDriverWait(browser, 120, 1).until(
+        expect.element_to_be_clickable(
+            (By.XPATH, "/html/body/div/div/div/div/section/form/div[1]/div/input")
+        )
+    )
+finally:
+    user_input.send_keys(user)
+
+# Passwort einfügen
+try:
+    pw_input = WebDriverWait(browser, 120, 1).until(
+        expect.element_to_be_clickable(
+            (By.XPATH, "/html/body/div/div/div/div/section/form/div[2]/div/input")
+        )
+    )
+finally:
+    pw_input.send_keys(pw)
