@@ -5,13 +5,20 @@ from selenium.webdriver.support import expected_conditions as expect
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import time
+import os
+
+# aktuelles Verzeichnis der Datei
+aktVerzeichnis = os.path.dirname(__file__)
+
+# Zusammensetzen des Verzeichnispfads zum chromedriver
+chromedriver = os.path.join(aktVerzeichnis, 'chromedriver')
 
 # Set URL to interact with
 url = 'https://modulanmeldung.fh-kiel.de/'
 
 # Find webdriver for Chrome
 browser = webdriver.Chrome(
-    executable_path='') # Hinzufügen des chromedriver executable paths
+    executable_path= chromedriver)
 
 # Aufrufen der Website mithilfe von Selenium 
 browser.get(url)
