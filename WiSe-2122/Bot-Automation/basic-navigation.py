@@ -1,3 +1,11 @@
+# 1. Herunterladen von Google Chrome https://www.google.com/intl/de/chrome/ 
+# 2. Google Chrome Version herausfinden 
+# 3. Passende Chromedriver herunterladen https://chromedriver.chromium.org/downloads
+# 4. Selenium installieren
+#   Windows: py -m pip install selenium
+#   MacOS: python3 -m pip install selenium
+# 5. Ausführen
+
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.wait import WebDriverWait
