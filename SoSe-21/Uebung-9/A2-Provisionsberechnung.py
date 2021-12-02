@@ -3,9 +3,6 @@ import os
 # aktuelles Verzeichnis der Datei
 aktVerzeichnis = os.path.dirname(__file__)
 
-# Texte liegen z. B. im Unterverzeichnis /texte
-txtVerzeichnis = os.path.join(aktVerzeichnis, 'texte')
-
 # Dateiname 1 zum Lesen
 dateiname1 = os.path.join(txtVerzeichnis, 'umsatz.csv')
 
