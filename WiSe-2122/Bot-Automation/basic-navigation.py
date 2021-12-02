@@ -42,6 +42,8 @@ finally:
     browser.implicitly_wait(10)
     login_button.click()
 
+user = input("Bitte geben Sie Ihre E-Mail Adresse ein: ")
+user.strip()
 
 pw = input("Bitte geben Sie Ihr Passwort ein: ")
 pw.strip()
@@ -65,3 +67,15 @@ try:
     )
 finally:
     pw_input.send_keys(pw)
+
+# Click the button "Anmelden"
+try:
+    login_button_2 = WebDriverWait(browser, 120, 1).until(
+        expect.element_to_be_clickable(
+            (By.XPATH, "/html/body/div/div/div/div/section/form/div[4]/div/input")
+        )
+    )
+finally:
+    browser.implicitly_wait(10)
+    login_button_2.click()
+    
