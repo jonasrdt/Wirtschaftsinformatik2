@@ -58,19 +58,28 @@ for container in item_div:
     else:
         bewertung.append('')
 
-    for i in container.select('div.sg-col-inner > span.a-text-bold'):
-        print(i.text)
-        
-        
-        content_temp = str(i.text)
-        if content_temp.find("SSD"):
-            cpu.append(content_temp + ",")
+    for attribut in container.select('div.sg-col-inner > span.a-text-bold'):
+        print("Ein Attribut lautet:", attribut.text)
+        attribut_temp = str(attribut.text)
+        if attribut_temp.find("Zoll") >= 0:
+            displaygroesse.append(attribut_temp)
+        elif attribut_temp.find("GHz") >= 0:
+            cpu.append(attribut_temp)
+        elif attribut_temp.find("GB") >= 0:
+            ram.append(attribut_temp)
+        else:
+            displaygroesse.append(" ")
+            cpu.append(" ")
+            ram.append(" ")
+  
 
-produkte = pd.DataFrame({
-    'Name': titel,
-    'Preis': preis,
-    'Bewertung': bewertung
-})
-print(cpu)
-produkte.to_csv('produkte.csv')
-
+print(len(displaygroesse))
+print(len(cpu))
+print(len(ram)) 
+# produkte = pd.DataFrame({
+#     'Name': titel,
+#     'Preis': preis,
+#     'Bewertung': bewertung
+# })
+# print(cpu)
+# produkte.to_csv('produkte.csv')
