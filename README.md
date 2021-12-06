@@ -1,2 +1,2 @@
 # Wirtschaftsinformatik 2
-In diesem Repository finden Sie die Lösungen zu den Übungen der Vorlesung Wirtschaftsinformatik 2 im Sommersemester 2021.
+In diesem Repository finden Sie die Lösungen zu den Übungen der Vorlesung Wirtschaftsinformatik 2.
