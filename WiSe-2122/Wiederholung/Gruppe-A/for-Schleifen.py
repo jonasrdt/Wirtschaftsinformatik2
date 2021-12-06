@@ -1,9 +1,9 @@
 
  
-namen = [["Moritz", "Winklmair", "Kiel", "24", "ledig"],
-         ["Alina", "Pankau", "Hamburg", "21"],
-         ["Niklas", "Lorenzen", "Lübeck", "26", "Fußballspieler"],
-         ["Synthia", "Kollar", "Schleswig", "20"]]
+namen = [["Moritz", "Müller", "Kiel", "24", "ledig"],
+         ["Alina", "Musterfrau", "Hamburg", "21"],
+         ["Niklas", "Hansen", "Lübeck", "26", "Fußballspieler"],
+         ["Synthia", "Jensen", "Schleswig", "20"]]
 
 for element in range(len(namen)):
     print("Der Vorname lautet: \t", namen[element][0], "\nDer Nachname lautet: \t", namen[element][1])
