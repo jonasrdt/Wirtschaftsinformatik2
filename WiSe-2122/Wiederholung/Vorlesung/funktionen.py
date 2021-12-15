@@ -25,12 +25,12 @@ def zahlenAbfrage(art_des_wertes):
             print("Bitte geben Sie nur Zahlen ein.")
 
 # Hauptprogramm
-# Hier wäre noch eine entsprechende Fehlerabfrage zu ergänzen
-schlaf = zahlenAbfrage("Schlaf")
-alkohol = zahlenAbfrage("Promille")
+restalkohol_calc = restalkohol(zahlenAbfrage("Promille"), zahlenAbfrage("Schlaf"))
 
-print("Ihr Restalkohol beträgt:", restalkohol(zahlen, schlaf))
-if restalkohol(alkohol, schlaf) > 0:
+if restalkohol_calc > 0:
+    print("Ihr Restalkohol beträgt:", restalkohol_calc)
     print("Bitte kein Auto fahren.")
 else:
+    print("Ihr Restalkohol beträgt:", restalkohol_calc)
     print("Gute Fahrt.")
+    
