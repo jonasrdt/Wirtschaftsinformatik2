@@ -24,11 +24,14 @@ ergebnis = zufallszahl_1 + zufallszahl_2
 richtige_eingabe = False
 
 while not richtige_antwort:
-    # Erfassen der Antwort des Nutzers
-    nutzerantwort = int(input("Bitte geben Sie das Ergebnis ein: "))
-    # Prüfen des Ergebnisses
-    if (ergebnis == nutzerantwort):
-        print("Das Ergebnis", ergebnis, "ist korrekt. Herzlichen Glückwunsch.")
-        richtige_antwort = True
-    else:
-        print("Das Ergebnis ist falsch.")
+    try:
+        # Erfassen der Antwort des Nutzers
+        nutzerantwort = int(input("Bitte geben Sie das Ergebnis ein: "))
+        # Prüfen des Ergebnisses
+        if (ergebnis == nutzerantwort):
+            print("Das Ergebnis", ergebnis, "ist korrekt. Herzlichen Glückwunsch.")
+            richtige_antwort = True
+        else:
+            print("Das Ergebnis ist falsch.")
+    except:
+        print("Bitte geben Sie nur Zahlen ein.")
