@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 # Übernehmen der URL von Amazon
-url = "https://www.ebay-kleinanzeigen.de/s-kiel/surfbretter/k0l663r50"
+url = "https://www.ebay-kleinanzeigen.de/s-kiel/kinderspielzeug/k0l663r50"
 
 # Vorgaukeln eines "echten" Browsern
 HEADERS = ({'User-Agent':
@@ -31,6 +31,9 @@ beschreibung = []
 preis = []
 versandart = []
 
+
+# tinyurl.com/automate22
+
 # Separieren der benötigten Informationen aus dem gesamten Code heraus
 item_div = soup.find_all('div', class_='aditem-main')
 
@@ -41,5 +44,27 @@ for artikel in item_div:
         titel.append(titel_temp)
     else:
         titel.append('')
+    
+    # Beschreibung einlesen
+    if artikel.find('p', class_='aditem-main--middle--description'):
+        beschreibung_temp = artikel.find('p', class_='aditem-main--middle--description').text
+        beschreibung.append(beschreibung_temp)
+    else:
+        beschreibung.append('')
+        
+    # Preis einlesen
+    if artikel.find('p', class_='aditem-main--middle--price'):
+        preis_temp = artikel.find('p', class_='aditem-main--middle--price').text
+        preis.append(preis_temp)
+    else:
+        preis.append('')   
 
-print(titel)
+# Erstellen eines DataFrames für die gesuchten Artikel
+artikel = pd.DataFrame({
+    'Name': titel,
+    'Beschreibung': beschreibung,
+    'Preis': preis
+})
+
+# CSV Export des DataFrames
+# artikel.to_csv('Surfbretter.csv')
