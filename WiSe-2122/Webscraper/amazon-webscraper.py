@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 # Übernehmen der URL von Amazon
-url = "https://www.amazon.de/s?k=macbook+pro&__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss_2"
+url = "https://www.amazon.de/s?k=ipad&__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2ZKMTZ2F0NLHQ&sprefix=ipad%2Caps%2C214&ref=nb_sb_noss_1"
 
 # Forcieren der englischen Website
 HEADERS = ({'User-Agent':
@@ -21,6 +21,7 @@ results = requests.get(url, headers = HEADERS)
 
 # # Übersetzen des Inhalts von result
 soup = BeautifulSoup(results.text, "html.parser")
+
 
 # Initialisieren der Variablen für die geforderten Inhalte
 titel = []
@@ -73,13 +74,12 @@ for container in item_div:
             ram.append(" ")
   
 
-print(len(displaygroesse))
-print(len(cpu))
-print(len(ram)) 
-# produkte = pd.DataFrame({
-#     'Name': titel,
-#     'Preis': preis,
-#     'Bewertung': bewertung
-# })
-# print(cpu)
-# produkte.to_csv('produkte.csv')
+
+produkte = pd.DataFrame({
+    'Name': titel,
+    'Preis': preis,
+    'Bewertung': bewertung
+})
+print(produkte)
+produkte.to_csv('produkte.csv')
+produkte.to_excel('produkte.xls')
