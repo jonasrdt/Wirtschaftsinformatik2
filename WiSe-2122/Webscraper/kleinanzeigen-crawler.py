@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 # Übernehmen der URL von Amazon
-url = "https://www.ebay-kleinanzeigen.de/s-kiel/kinderspielzeug/k0l663r50"
+url = "https://www.ebay-kleinanzeigen.de/s-kiel/surfbretter/k0l663r50"
 
 # Vorgaukeln eines "echten" Browsern
 HEADERS = ({'User-Agent':
@@ -26,6 +26,7 @@ soup = BeautifulSoup(results.text, "html.parser")
 # Definieren der Inhalte, die wir speichern wollen
 titel = [] # Leeres Listenelement
 standort = []
+plz = []
 einstellungsdatum = []
 beschreibung = []
 preis = []
@@ -55,16 +56,40 @@ for artikel in item_div:
     # Preis einlesen
     if artikel.find('p', class_='aditem-main--middle--price'):
         preis_temp = artikel.find('p', class_='aditem-main--middle--price').text
+        preis_temp = preis_temp.replace("VB", "").replace("€", "")
         preis.append(preis_temp)
     else:
-        preis.append('')   
+        preis.append('')  
+
+    # Standort einlesen
+    if artikel.find('div', class_='aditem-main--top--left'):
+        standort_temp = artikel.find('div', class_='aditem-main--top--left').text
+        plz.append(standort_temp[:7])
+        standort.append(standort_temp[7:])
+    else:
+        standort.append('')
+
+    # Versandart einlesen
+    if artikel.find('span', class_='simpletag tag-small'):
+        versandart_temp = artikel.find('span', class_='simpletag tag-small').text
+        versandart.append(versandart_temp)
+    else:
+        versandart.append('')   
 
 # Erstellen eines DataFrames für die gesuchten Artikel
 artikel = pd.DataFrame({
     'Name': titel,
     'Beschreibung': beschreibung,
-    'Preis': preis
+    'Preis': preis,
+    'Postleitzahl': plz,
+    'Standort': standort,
+    'Versandart': versandart
 })
 
 # CSV Export des DataFrames
-# artikel.to_csv('Surfbretter.csv')
+try:
+    artikel.to_csv('Surfbretter.csv')
+    print("SUCCESS: Datei wurde exportiert.")
+except:
+    print("FEHLER! Hat nicht geklappt.")
+
