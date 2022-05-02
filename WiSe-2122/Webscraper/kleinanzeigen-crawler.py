@@ -31,3 +31,15 @@ beschreibung = []
 preis = []
 versandart = []
 
+# Separieren der benötigten Informationen aus dem gesamten Code heraus
+item_div = soup.find_all('div', class_='aditem-main')
+
+for artikel in item_div:
+    # Namen einlesen
+    if artikel.find('a', class_='ellipsis'):
+        titel_temp = artikel.find('a', class_='ellipsis').text
+        titel.append(titel_temp)
+    else:
+        titel.append('')
+
+print(titel)
