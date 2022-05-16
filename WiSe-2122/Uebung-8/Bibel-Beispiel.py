@@ -5,6 +5,9 @@ import os
 woerterCounter = 0
 woerterDict = {}
 
+
+test = "Jonas"
+
 # Zuweisen des Verzeichnisses der geöffneten Datei
 aktuelles_Verzeichnis = os.path.dirname(__file__)
 print("Wir befinden uns in dem Verzeichnis: ", aktuelles_Verzeichnis)
