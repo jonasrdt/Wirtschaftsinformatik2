@@ -1,5 +1,8 @@
 
 
+# Index           # 0     # 1      # 2
+einkaufsliste = ['Brot', 'Bier', 'Salz']
+
 # to-do Liste
 todo = []
 
