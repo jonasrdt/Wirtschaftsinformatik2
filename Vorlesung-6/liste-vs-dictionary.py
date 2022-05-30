@@ -19,4 +19,3 @@ telefon_dict = {
 name_dict = input("Bitte geben Sie den Namen ein, zu dem Sie die Telefonnummer haben wollen: ")
 if name_dict in telefon_dict:
     print(telefon_dict[name_dict])
-
