@@ -16,3 +16,6 @@ print(10 * 2)
 
 # Potenzieren mit dem Exponenten 4
 print(10 ** 4)
+
+# Modulo % - teilen mit Rest
+print(13 % 5)
