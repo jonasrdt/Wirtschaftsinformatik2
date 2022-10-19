@@ -19,4 +19,19 @@ while not korrekte_eingabe:
     else:
         print("Sie scheinen weder verheiratet noch ledig zu sein. Überprüfen Sie Ihre Eingabe.")
 
-bruttogehalt = int(input("Bitte geben Sie Ihr Bruttogehalt ein: "))
+# Definieren der Abbruchbedingung
+korrektes_bruttogehalt = False
+# Starten der while-Schleife, solange noch KEINE korrekte Eingabe des Bruttogehalts getätigt wurde
+while not korrektes_bruttogehalt:
+    # Erfassen der Eingabe des Users
+    bruttogehalt = int(input("Bitte geben Sie Ihr monatliches Bruttogehalt ein: "))
+    # Prüfen, ob das Bruttogehalt größer oder gleich 0 ist
+    if bruttogehalt >= 0:
+        # Setzen der Abbruchvariable
+        korrektes_bruttogehalt = True
+        # Hinweis auf Einkommenssteuerfreibetrag
+        if bruttogehalt < 886:
+            print("Ihr Bruttogehalt i.H.v.", bruttogehalt, "liegt unter dem Freibetrag. Daher fallen keine Steuern an.")
+    else:
+        # Ausführen, wenn eine Zahl kleiner als 0 eingegeben wurde
+        print("Bitte geben Sie ein korrektes Bruttogehalt, größer als 0.00€ an.")
