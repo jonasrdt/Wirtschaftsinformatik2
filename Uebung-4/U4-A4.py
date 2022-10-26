@@ -3,13 +3,28 @@
 # q eingeben, dann endet das Programm. Bei allen anderen Grundrechenoperationen
 # wird eine Fehlermeldung ausgegeben.
 
-# Erfassen der Zahlen durch den Nutzer und umwandeln in den Datentypen float
-erste_zahl = float(input("Bitte geben Sie die erste Zahl ein: "))
-# Datentyp String für die Variable rechenoperation
-rechenoperation = input("Bitte geben Sie die Rechenoperation ein: ")
-# Erfassen der Zahlen durch den Nutzer und umwandeln in den Datentypen float
-zweite_zahl = float(input("Bitte geben Sie die zweite Zahl ein: "))
+korrekte_erste_eingabe = False
+while not korrekte_erste_eingabe:
+    try:
+        # Erfassen der Zahlen durch den Nutzer und umwandeln in den Datentypen float
+        erste_zahl = float(input("Bitte geben Sie die erste Zahl ein: "))
+        korrekte_erste_eingabe = True
+    except:    
+        print("Es ist ein Fehler aufgetreten. Bitte geben Sie nur Zahlen ein.")
 
+korrekte_zweite_eingabe = False
+while not korrekte_zweite_eingabe:
+    try:
+        # Erfassen der Zahlen durch den Nutzer und umwandeln in den Datentypen float
+        zweite_zahl = float(input("Bitte geben Sie die zweite Zahl ein: "))
+        korrekte_zweite_eingabe = True
+    except:    
+        print("Es ist ein Fehler aufgetreten. Bitte geben Sie nur Zahlen ein.")
+
+korrekte_rechenoperation = False
+while not korrekte_rechenoperation:
+    rechenoperation = input("Bitte geben Sie eine Rechenoperation ein: ")
+    
 
 # Prüfen ob die Rechenoperation zu einer der vorliegenden passt
 if rechenoperation == "+":
