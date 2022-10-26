@@ -13,7 +13,7 @@ while not korrekte_erste_eingabe:
         korrekte_erste_eingabe = True
     except:    
         print("Es ist ein Fehler aufgetreten. Bitte geben Sie nur Zahlen ein.")
-        
+
 # Abfrage der ersten Zahl und technische Fehlerprüfung mit try,except. while-Schleife
 # läuft solange, bis der Nutzer eine gültige Zahl eingegeben hat.
 korrekte_zweite_eingabe = False
