@@ -2,7 +2,13 @@
 import math
 
 # Festlegen einer Zahl, aus der die Wurzel gezogen wird
-zahl = 2
+korrekte_eingabe = False
+while not korrekte_eingabe:
+    try:
+        zahl = int(input("Bitte geben Sie eine ganze Zahl ein: "))
+        korrekte_eingabe = True
+    except:
+        print("Bitte geben Sie nur ganze Zahlen ein.")
 
 # Berechnen des Ergebnisses mittels der Methode sqrt()
 # und runden auf vier Nachkommastellen
