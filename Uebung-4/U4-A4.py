@@ -24,7 +24,10 @@ while not korrekte_zweite_eingabe:
 korrekte_rechenoperation = False
 while not korrekte_rechenoperation:
     rechenoperation = input("Bitte geben Sie eine Rechenoperation ein: ")
-    
+    if rechenoperation == "+" or rechenoperation == "-" or rechenoperation == "*" or rechenoperation == "/":
+        korrekte_rechenoperation = True
+    else:
+        print("Bitte geben Sie nur + - / * ein.")
 
 # Prüfen ob die Rechenoperation zu einer der vorliegenden passt
 if rechenoperation == "+":
