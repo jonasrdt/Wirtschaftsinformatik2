@@ -17,9 +17,9 @@ def spielername(spielernummer):
 
 def spielentscheidung(spielername):
     print(spielername, "bitte wähle zwischen Schere, Stein oder Papier.")
-    spielentscheidung = input("Deine Spielentscheidung: ")
     korrekte_spielentscheidung = False
     while not korrekte_spielentscheidung:
+        spielentscheidung = input("Deine Spielentscheidung: ")
         if spielentscheidung.lower() == "schere" or spielentscheidung.lower() == "stein" or spielentscheidung.lower() == "papier":
             print("Du hast dich für", spielentscheidung, "entschieden. Bestimmt eine gute Wahl.")
             korrekte_spielentscheidung = True
@@ -57,7 +57,9 @@ trenner(50)
 spieler_1 = spielername(1)
 spieler_2 = spielername(2)
 trenner(50)
-spielentscheidung(spieler_1)
+spielentscheidung_1 = spielentscheidung(spieler_1)
 trenner(50)
-spielentscheidung(spieler_2)
+spielentscheidung_2 = spielentscheidung(spieler_2)
+trenner(50)
+gewinner(spielentscheidung_1, spielentscheidung_2, spieler_1, spieler_2)
 trenner(50)
