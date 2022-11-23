@@ -6,6 +6,9 @@
 # • Geben Sie den Gewinner aus.
 # Optimieren Sie das Programm, so dass Sie Programmteile in Funktionen auslagern.
 
+import random
+random.seed()
+
 #################################        
 ###### Funktionsdefinition ######
 #################################
@@ -43,6 +46,15 @@ def gewinner(spielentscheidung_1, spielentscheidung_2, spieler_1, spieler_2):
     elif spielentscheidung_1.lower() == "papier" and spielentscheidung_2.lower() == "schere":
         print(spieler_2, "hat gewonnen.", spielentscheidung_2, "schlägt", spielentscheidung_1,".")
         
+def computerwahl():
+    entscheidung = random.randint(1,3)
+    if entscheidung == 1:
+        return "Schere"
+    elif entscheidung == 2:
+        return "Papier"
+    elif entscheidung == 3:
+        return "Stein"   
+        
 def trenner(anzahl):
     for i in range(anzahl):
         print("*", end= " ")
@@ -54,12 +66,27 @@ def trenner(anzahl):
 trenner(50)
 print("Willkommen zu Stein, Schere, Papier.")
 trenner(50)
-spieler_1 = spielername(1)
-spieler_2 = spielername(2)
-trenner(50)
-spielentscheidung_1 = spielentscheidung(spieler_1)
-trenner(50)
-spielentscheidung_2 = spielentscheidung(spieler_2)
-trenner(50)
-gewinner(spielentscheidung_1, spielentscheidung_2, spieler_1, spieler_2)
-trenner(50)
+korrekte_eingabe = False
+while not korrekte_eingabe:
+    try:
+        spielerzahl = int(input("Wie viele Spieler seid ihr (1 oder 2): "))
+        if spielerzahl == 2:
+            spieler_1 = spielername(1)
+            spieler_2 = spielername(2)
+            trenner(50)
+            spielentscheidung_1 = spielentscheidung(spieler_1)
+            trenner(50)
+            spielentscheidung_2 = spielentscheidung(spieler_2)
+            trenner(50)
+            gewinner(spielentscheidung_1, spielentscheidung_2, spieler_1, spieler_2)
+            trenner(50)
+        elif spielerzahl == 1:
+            spieler_1 = spielername(1)
+            spielentscheidung_1 = spielentscheidung(spieler_1)
+            computerentscheidung = computerwahl()
+            gewinner(spielentscheidung_1, computerentscheidung, spieler_1, "der Computer")
+        else:
+            print("Bitte gib nur eine 1 oder 2 ein.")
+            korrekte_eingabe = True
+    except:
+        print("Bitte geben Sie nur Zahlen ein.")
