@@ -12,11 +12,11 @@
 
 def spielername(spielernummer):
     print("Hallo Spieler", spielernummer, "bitte gib deine Namen ein.")
-    spielername = input("Dein Name:")
+    spielername = input("Dein Name: ")
     return spielername
 
-def spielentscheidung():
-    print("Bitte wähle zwischen Schere, Stein oder Papier.")
+def spielentscheidung(spielername):
+    print(spielername, "bitte wähle zwischen Schere, Stein oder Papier.")
     spielentscheidung = input("Deine Spielentscheidung: ")
     korrekte_spielentscheidung = False
     while not korrekte_spielentscheidung:
@@ -42,7 +42,22 @@ def gewinner(spielentscheidung_1, spielentscheidung_2, spieler_1, spieler_2):
         print(spieler_1, "hat gewonnen.", spielentscheidung_1, "schlägt", spielentscheidung_2,".")
     elif spielentscheidung_1.lower() == "papier" and spielentscheidung_2.lower() == "schere":
         print(spieler_2, "hat gewonnen.", spielentscheidung_2, "schlägt", spielentscheidung_1,".")
+        
+def trenner(anzahl):
+    for i in range(anzahl):
+        print("*", end= " ")
+    print()
 
 ###########################        
 ###### Hauptprogramm ######
 ###########################
+trenner(50)
+print("Willkommen zu Stein, Schere, Papier.")
+trenner(50)
+spieler_1 = spielername(1)
+spieler_2 = spielername(2)
+trenner(50)
+spielentscheidung(spieler_1)
+trenner(50)
+spielentscheidung(spieler_2)
+trenner(50)
