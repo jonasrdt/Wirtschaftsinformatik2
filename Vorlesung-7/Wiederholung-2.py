@@ -13,4 +13,3 @@ print("Auf der Einkaufsliste befinden sich", len(einkaufsliste), "Gegenstände."
 
 for artikel in einkaufsliste:
     print("Von dem Artikel", artikel[0], "benötigt man", artikel[1], "Artikel.")
-    
