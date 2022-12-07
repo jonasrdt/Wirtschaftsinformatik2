@@ -42,9 +42,9 @@ while spielentscheidung:
              
     trenner(15)
     for versuch in range(1,anzahl_versuche+1):
-        nutzereingabe = int(input("Bitte geben Sie die Lösung ein: "))
+        nutzereingabe = round(float(input("Bitte geben Sie die Lösung, gerundet auf zwei Nachkommastellen ein: ")),2)
         trenner(15)
-        if nutzereingabe == loesung:
+        if nutzereingabe == round(loesung,2):
             print("Juhu. Sie haben das richtige Ergebnis berechnet.")
             trenner(15)
             break
