@@ -89,4 +89,3 @@ while spielentscheidung:
     if weiterspielen.lower() == "nein":
         spielentscheidung = False
         print("Alles klar. Viel Spaß noch. :-)")
-
