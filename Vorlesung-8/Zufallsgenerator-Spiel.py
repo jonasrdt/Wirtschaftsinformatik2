@@ -12,35 +12,7 @@ def trenner(anzahl):
         print("*", end= " ")
     print()
     
-
-spielentscheidung = True
-while spielentscheidung:
-    erste_zahl = random.randint(1,15)
-    zweite_zahl = random.randint(1,15)
-    
-    korrektes_verfahren = False
-    while not korrektes_verfahren:
-        rechenverfahren = input("Bitte geben Sie die Rechenoperation ein, die Sie durchführen wollen (+,-,/,*): ")
-        if rechenverfahren == "+":
-                print("Die Aufgabe lautet:", erste_zahl, "+", zweite_zahl)
-                loesung = erste_zahl + zweite_zahl
-                korrektes_verfahren = True
-        elif rechenverfahren == "-":
-                print("Die Aufgabe lautet:", erste_zahl, "-", zweite_zahl)
-                loesung = erste_zahl - zweite_zahl       
-                korrektes_verfahren = True 
-        elif rechenverfahren == "/":
-                print("Die Aufgabe lautet:", erste_zahl, "/", zweite_zahl)
-                loesung = erste_zahl / zweite_zahl
-                korrektes_verfahren = True     
-        elif rechenverfahren == "*":
-                print("Die Aufgabe lautet:", erste_zahl, "*", zweite_zahl)
-                loesung = erste_zahl * zweite_zahl
-                korrektes_verfahren = True
-        else:
-            print("Bitte geben Sie nur +, -, / oder * ein.")       
-             
-    trenner(15)
+def loesungsermittlung(anzahl_versuche, loesung):
     for versuch in range(1,anzahl_versuche+1):
         nutzereingabe = round(float(input("Bitte geben Sie die Lösung, gerundet auf zwei Nachkommastellen ein: ")),2)
         trenner(15)
@@ -54,6 +26,30 @@ while spielentscheidung:
             trenner(15)
             if versuch == 3:
                 print("Schade, das war wohl nix. Spiel vorbei")
+
+def rechenverfahren():
+    rechenoperationen = ["+", "-", "/", "*"]
+    korrektes_rechenverfahren = False
+    while not korrektes_rechenverfahren:
+        rechenverfahren = input("Bitte geben Sie die Rechenoperation ein, die Sie durchführen wollen (+,-,/,*): ")
+        if rechenverfahren in rechenoperationen:
+            return rechenverfahren
+        else:
+            print("Bitte geben Sie nur +, -, /, * ein: ")
+  
+
+def rechenaufgabe(operator, erste_zahl, zweite_zahl):
+       print("Die Aufgabe lautet:", erste_zahl, operator, zweite_zahl)
+       aufgabe = str(erste_zahl) + operator + str(zweite_zahl)
+       loesung = eval(aufgabe)
+       return loesung
+       
+
+spielentscheidung = True
+while spielentscheidung:
+    erste_zahl = random.randint(1,15)
+    zweite_zahl = random.randint(1,15)
+    loesungsermittlung(anzahl_versuche, rechenaufgabe(rechenverfahren(), erste_zahl, zweite_zahl))
     weiterspielen = input("Wollen Sie weiterspielen (ja/nein): ")
     if weiterspielen.lower() == "nein":
         spielentscheidung = False
