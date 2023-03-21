@@ -15,15 +15,8 @@ telefonbuch = [["Jonas", "012784539"],        # Index 0
 
 name = input("Bitte geben Sie den Namen ein, dessen Telefonnummer Sie erfahren wollen: ")
 
-# Prüfen, ob sich der Name im Telefonbuch befinden
-if name in telefonbuch:
-    # Wenn sich der Name im Telefonbuch befindet, durchsuchen aller Einträge
-    # und Ausgeben der Nummer
-    for eintrag in telefonbuch:
-        if name == eintrag[0]: 
-            print("Die Telefonnummer von", eintrag[0], "lautet:", eintrag[1])
-            break # break, damit die Schleife abbricht, sobald der Eintrag gefunden wurde
-else:
-    print("Der Name", name,"befindet sich nicht im Telefonbuch.")
-
+for eintrag in telefonbuch:
+    if name == eintrag[0]: 
+        print("Die Telefonnummer von", eintrag[0], "lautet:", eintrag[1])
+        break # break, damit die Schleife abbricht, sobald der Eintrag gefunden wurde
 # PROBLEM: Durchsuchen von Listen entspricht einer Komplexität O(n)
