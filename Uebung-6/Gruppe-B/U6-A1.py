@@ -89,5 +89,6 @@ while not gewinner:
     winner = winner(entscheidung_1, entscheidung_2, spielerin_1, spielerin_2)
     if winner == "Unentschieden":
         print("Unentschieden! Noch Mal ...")
+        print("------------------------------")
     else:
         print("Juhu", winner, "hat gewonnen.")
