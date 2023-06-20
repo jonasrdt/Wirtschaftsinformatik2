@@ -22,7 +22,7 @@ aktVerzeichnis = os.path.dirname(__file__)
 chromedriver = os.path.join(aktVerzeichnis, 'chromedriver')
 
 # Set URL to interact with
-url = 'https://modulanmeldung.fh-kiel.de/'
+url = 'https://www.foerde-sparkasse.de/de/home.html'
 
 # Find webdriver for Chrome
 browser = webdriver.Chrome(
@@ -35,7 +35,7 @@ browser.get(url)
 try:
     login_button = WebDriverWait(browser, 120, 1).until(
         expect.element_to_be_clickable(
-            (By.XPATH, "/html/body/nav/div/div[2]/ul[2]/li[2]/form/button")
+            (By.XPATH, "/html/body/div/div[2]/div/div[4]/form/button")
         )
     )
 finally:
@@ -48,34 +48,35 @@ user.strip()
 pw = input("Bitte geben Sie Ihr Passwort ein: ")
 pw.strip()
 
-# E-Mail Adresse einfügen
-try:
-    user_input = WebDriverWait(browser, 120, 1).until(
-        expect.element_to_be_clickable(
-            (By.XPATH, "/html/body/div/div/div/div/section/form/div[1]/div/input")
+for i in range(250):
+    # E-Mail Adresse einfügen
+    try:
+        user_input = WebDriverWait(browser, 120, 1).until(
+            expect.element_to_be_clickable(
+                (By.XPATH, "/html/body/div/div/div/div/section/form/div[1]/div/input")
+            )
         )
-    )
-finally:
-    user_input.send_keys(user)
+    finally:
+        user_input.send_keys(user)
 
-# Passwort einfügen
-try:
-    pw_input = WebDriverWait(browser, 120, 1).until(
-        expect.element_to_be_clickable(
-            (By.XPATH, "/html/body/div/div/div/div/section/form/div[2]/div/input")
+    # Passwort einfügen
+    try:
+        pw_input = WebDriverWait(browser, 120, 1).until(
+            expect.element_to_be_clickable(
+                (By.XPATH, "/html/body/div/div/div/div/section/form/div[2]/div/input")
+            )
         )
-    )
-finally:
-    pw_input.send_keys(pw)
+    finally:
+        pw_input.send_keys(pw)
 
-# Click the button "Anmelden"
-try:
-    login_button_2 = WebDriverWait(browser, 120, 1).until(
-        expect.element_to_be_clickable(
-            (By.XPATH, "/html/body/div/div/div/div/section/form/div[4]/div/input")
+    # Click the button "Anmelden"
+    try:
+        login_button_2 = WebDriverWait(browser, 120, 1).until(
+            expect.element_to_be_clickable(
+                (By.XPATH, "/html/body/div/div/div/div/section/form/div[4]/div/input")
+            )
         )
-    )
-finally:
-    browser.implicitly_wait(10)
-    login_button_2.click()
-    
+    finally:
+        browser.implicitly_wait(10)
+        login_button_2.click()
+        
